@@ -1,11 +1,9 @@
-import knex from './database/conn.js'
-import { v4 as uuid } from 'uuid'
+const knex = require("./database/conn")
+const { v4: uuid } = require("uuid")
 
-export class CreateUser {
+class CreateUser {
 	async handle(data){
 		const { name, email, password } = data
-
-		console.log(data)
 
 		const emailExists = await knex('users').where('email', email).first()
 
@@ -20,6 +18,8 @@ export class CreateUser {
 			password
 		}).returning('*')
 
-		return user
+		return user[0]
 	}
 }
+
+module.exports = { CreateUser }

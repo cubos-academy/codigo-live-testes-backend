@@ -1,5 +1,5 @@
-import { Router } from 'express'
-import { CreateUser } from './create-user.js'
+const { Router } = require('express')
+const { CreateUser } = require('./create-user')
 
 const routes = Router()
 
@@ -10,4 +10,4 @@ routes.post('/user', async (req, res) => {
 	return res.status(201).json(newUser)
 })
 
-export default routes
+module.exports = routes

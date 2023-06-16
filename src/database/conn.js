@@ -1,11 +1,11 @@
-import knex from 'knex'
-
-export default knex({
+const knex = require('knex')({
     client: 'pg',
     connection: {
-        host: 'localhost',
-        user: 'postgres',
-        password: 'postgres',
-        database: 'live_testes_backend'
+        host: 'lucky.db.elephantsql.com',
+        user: 'eqcwejqp',
+        password: 'Bjd8vcqEIScgLAmfnGTmk1URCR3UQg6Y',
+        database: 'eqcwejqp'
     }
 })
+
+module.exports = knex
