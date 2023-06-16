@@ -1,24 +1,23 @@
-const knex = require("./database/conn")
 const { v4: uuid } = require("uuid")
 
 class CreateUser {
-	async handle(data){
+	async handle(data, repository){
 		const { name, email, password } = data
 
-		const emailExists = await knex('users').where('email', email).first()
+		const emailExists = await repository.findByEmail(email)
 
 		if (emailExists) {
 			throw new Error('Email já existe!')
 		}
 
-		const user = await knex('users').insert({
+		const user = await repository.create({
 			id: uuid(),
 			name,
 			email,
 			password
-		}).returning('*')
+		})
 
-		return user[0]
+		return user
 	}
 }
 

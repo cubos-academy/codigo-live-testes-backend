@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js",
+    "test": "jest --forceExit"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "jest": "^29.5.0",
     "nodemon": "^2.0.22"
   }
 }
